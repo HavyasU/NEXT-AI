@@ -11,6 +11,7 @@ const ChatBox = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [copyIndex, setCopyIndex] = useState(null);
   const copyRef = useRef(null);
+
   const getAnswer = async (e) => {
     setIsLoading(true);
     e.preventDefault();
@@ -61,7 +62,7 @@ const ChatBox = () => {
           await saveUserChat(currentUser, chats);
         }
       } catch (error) {
-        console.error("Error saving chat to database:", error);
+        console.log("Error saving chat to database:", error);
       }
     };
 
@@ -84,7 +85,7 @@ const ChatBox = () => {
             ]);
           }
         } catch (error) {
-          console.error("Error fetching user data:", error);
+          console.log("Error fetching user data:", error);
         }
       }
       setIsLoading(false);
@@ -106,8 +107,10 @@ const ChatBox = () => {
     if (e.key == "Enter" && e.ctrlKey) {
       insertNewLine(e);
     } else if (e.key == "Enter") {
-      getAnswer(e);
-      setPrompt("");
+      if (!isLoading) {
+        getAnswer(e);
+        setPrompt("");
+      }
     }
   };
 
@@ -149,8 +152,10 @@ const ChatBox = () => {
       <form
         className="flex justify-center mt-4"
         onSubmit={(e) => {
-          getAnswer(e);
-          setPrompt("");
+          if (!isLoading) {
+            getAnswer(e);
+            setPrompt("");
+          }
         }}
       >
         <div
@@ -208,6 +213,7 @@ const ChatBox = () => {
             ></textarea>
             <button
               type="submit"
+              disabled={isLoading}
               className="bg-[#382bf0]  text-xl   cursor-pointer w-[60px] h-[60px] rounded-sm flex justify-center items-center"
             >
               <i class="fa-solid fa-paper-plane"></i>

@@ -7,7 +7,7 @@ export const saveUserChat = async (userId, chatData) => {
         console.log("Chat data saved successfully!");
     } catch (error) {
         console.error("Error saving chat data:", error);
-        alert("Error saving chat data. Please try again later.");
+        console.log("Error saving chat data. Please try again later.");
     }
 };
 export const getUserData = async (userId) => {
@@ -23,6 +23,6 @@ export const getUserData = async (userId) => {
         }
     } catch (error) {
         console.error("Error saving chat data:", error);
-        alert("Error saving chat data. Please try again later.");
+        console.log("Error saving chat data. Please try again later.");
     }
 };
