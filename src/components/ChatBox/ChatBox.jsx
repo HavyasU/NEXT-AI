@@ -167,11 +167,11 @@ const ChatBox = () => {
             Object.entries(chats)?.map((ele, ind) => {
               return (
                 <div
-                  className={` max-sm:px-1 max-sm:text-[13px] my-2  w-[38vw] max-[426px]:w-[15rem] ${
+                  className={` max-sm:px-1 max-sm:text-[13px] my-2  w-[38vw] max-[500px]:w-[15rem] ${
                     ele[1]?.role === "gpt"
                       ? "self-start gpt-message"
                       : "self-end user-message"
-                  }  bg-[#171712] max-sm:px-1 px-5 py-3 mx-3 text-[16px] my-1 shadow-md shadow-gray-600`}
+                  }  bg-[#171712] max-sm:px-1 px-2 py-3 mx-3 text-[16px] my-1 shadow-md shadow-gray-600`}
                   key={ind}
                 >
                   <div
@@ -208,7 +208,7 @@ const ChatBox = () => {
               placeholder="Text Here..."
               value={prompt}
               style={{ resize: "none" }}
-              className="bg-[#46424f] shadow-lg shadow-black text-white outline-none font-bold max-sm:text-xl text-2xl  px-2 max-sm:w-[100%] w-[50rem] max-sm:h-[100%] h-[100%]"
+              className="bg-[#46424f] shadow-lg shadow-black text-white outline-none font-bold max-sm:text-[15px] text-xl  px-2 max-sm:w-[100%] w-[50rem] max-sm:h-[100%] h-[100%]"
               onKeyDown={handleKeyDown}
             ></textarea>
             <button
