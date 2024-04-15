@@ -12,7 +12,7 @@ import {
   docco,
 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
-const socket = io("http://127.0.0.1:5000");
+const socket = io(process.env.REACT_APP_API_URL);
 const ChatBox = () => {
   const [chats, setChats] = useState([]);
   const { currentUser } = useAuth();
