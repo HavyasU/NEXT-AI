@@ -6,11 +6,12 @@ import {
   doSignInWithGoogle,
 } from "../../firebase/auth";
 import { NavLink, Navigate } from "react-router-dom";
+import Navbar from "../navbar/Navbar";
 function SignUp() {
   const { userLoggedIn } = useAuth();
   const [isSigningUp, setisSigningUp] = useState(false);
   const [email, setEmail] = useState("havyas@gmail.com");
-  const [password, setPassword] = useState("Havyas@1234");
+  const [password, setPassword] = useState("Pass@1234");
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -32,14 +33,15 @@ function SignUp() {
   };
 
   return (
-    <div className=" flex flex-col w-[100vw] h-[100vh] justify-center items-center shadow-lg shadow-black">
+    <div className="pt-5 flex flex-col w-[100vw] h-[100vh] justify-center items-center shadow-lg shadow-black">
+      <Navbar/>
       <form
         onSubmit={onSubmit}
         className="max-sm:w-[90vw] max-sm:py-1 max-sm:gap-1  flex w-[30vw] flex-col bg-blue-600 p-5 gap-3 rounded-lg "
       >
         {userLoggedIn && <Navigate to={"/"} replace={true} />}
         <h3 className="max-sm:text-2xl text-4xl font-bold  text-center">
-          SignUp
+          Register
         </h3>
         <input
           type="text"

@@ -34,3 +34,10 @@ body {
     border-bottom-right-radius: 2px;
   }
 }
+
+@media only screen and (max-width: 340px) {
+  .gpt-message,
+  .user-message {
+    max-width: 70vw;
+  }
+}

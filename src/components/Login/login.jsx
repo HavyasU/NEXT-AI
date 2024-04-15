@@ -6,11 +6,12 @@ import {
   doSignInWithGoogle,
 } from "../../firebase/auth";
 import { NavLink, Navigate } from "react-router-dom";
+import Navbar from "../navbar/Navbar";
 function Login() {
   const { userLoggedIn, setUserLoggedIn } = useAuth();
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [email, setEmail] = useState("havyas@gmail.com");
-  const [password, setPassword] = useState("Havyas@1234");
+  const [password, setPassword] = useState("Pass@1234");
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ function Login() {
       setIsSigningIn(true);
       await doSignInWithEmailAndPassword(email, password).catch(() => {
         alert("User Not Registered Please SignUp");
-      });;
+      });
       setIsSigningIn(false);
     }
   };
@@ -32,13 +33,16 @@ function Login() {
   };
 
   return (
-    <div className=" flex flex-col w-[100vw] h-[100vh] justify-center items-center shadow-lg shadow-black">
+    <div className="pt-5 flex flex-col w-[100vw] h-[100vh] justify-center items-center shadow-lg shadow-black">
+      <Navbar />
       <form
         onSubmit={onSubmit}
         className="max-sm:w-[90vw] flex w-[30vw] flex-col bg-blue-600 p-5 gap-3 rounded-lg "
       >
         {userLoggedIn && <Navigate to={"/"} replace={true} />}
-        <h3 className="max-sm:text-2xl  text-4xl font-bold  text-center">Login</h3>
+        <h3 className="max-sm:text-2xl  text-4xl font-bold  text-center">
+          Login
+        </h3>
         <input
           type="text"
           placeholder="Email"
@@ -62,8 +66,11 @@ function Login() {
         </button>
       </form>
       <p className="mt-2 font-bold">
-        Dont Have an Account? 
-         <NavLink to={"/signup"} className={"text-cyan-400 underline"}> Register</NavLink>
+        Dont Have an Account?
+        <NavLink to={"/signup"} className={"text-cyan-400 underline"}>
+          {" "}
+          Register
+        </NavLink>
       </p>
       <button
         onClick={SignInwithGoogle}

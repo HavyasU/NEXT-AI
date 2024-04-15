@@ -8,9 +8,10 @@ const Home = () => {
   const { userLoggedIn } = useAuth();
   return (
     <div>
-      <Navbar />
+      <Navbar />  
       {!userLoggedIn && <Navigate to={"/login"} />}
       <ChatBox />
+
     </div>
   );
 };
